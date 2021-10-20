@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 import safeforhall.logic.commands.ClearCommand;
 import safeforhall.logic.commands.Command;
-import safeforhall.logic.commands.DeleteCommand;
 import safeforhall.logic.commands.EditCommand;
 import safeforhall.logic.commands.ExitCommand;
 import safeforhall.logic.commands.FindCommand;
@@ -18,8 +17,12 @@ import safeforhall.logic.commands.ListCommand;
 import safeforhall.logic.commands.ViewCommand;
 import safeforhall.logic.commands.add.AddEventCommand;
 import safeforhall.logic.commands.add.AddPersonCommand;
+import safeforhall.logic.commands.delete.DeleteEventCommand;
+import safeforhall.logic.commands.delete.DeletePersonCommand;
 import safeforhall.logic.parser.add.AddEventCommandParser;
 import safeforhall.logic.parser.add.AddPersonCommandParser;
+import safeforhall.logic.parser.delete.DeleteEventCommandParser;
+import safeforhall.logic.parser.delete.DeletePersonCommandParser;
 import safeforhall.logic.parser.exceptions.ParseException;
 
 /**
@@ -86,8 +89,8 @@ public class AddressBookParser {
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+        case DeletePersonCommand.COMMAND_WORD:
+            return new DeletePersonCommandParser().parse(arguments);
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
@@ -117,11 +120,11 @@ public class AddressBookParser {
         case AddEventCommand.COMMAND_WORD:
             return new AddEventCommandParser().parse(arguments);
 
+        case DeleteEventCommand.COMMAND_WORD:
+            return new DeleteEventCommandParser().parse(arguments);
+
         /*case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
-
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
 
         case ViewCommand.COMMAND_WORD:
             return new ViewCommand();*/

@@ -1,4 +1,4 @@
-package safeforhall.logic.commands;
+package safeforhall.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
 
@@ -7,6 +7,8 @@ import java.util.List;
 
 import safeforhall.commons.core.Messages;
 import safeforhall.commons.core.index.Index;
+import safeforhall.logic.commands.Command;
+import safeforhall.logic.commands.CommandResult;
 import safeforhall.logic.commands.exceptions.CommandException;
 import safeforhall.model.Model;
 import safeforhall.model.person.Person;
@@ -14,7 +16,7 @@ import safeforhall.model.person.Person;
 /**
  * Deletes a person identified using it's displayed index from the address book.
  */
-public class DeleteCommand extends Command {
+public class DeletePersonCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
@@ -27,7 +29,7 @@ public class DeleteCommand extends Command {
 
     private final ArrayList<Index> targetIndexArray;
 
-    public DeleteCommand(ArrayList<Index> targetIndexArray) {
+    public DeletePersonCommand(ArrayList<Index> targetIndexArray) {
         this.targetIndexArray = targetIndexArray;
     }
 
@@ -59,7 +61,7 @@ public class DeleteCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteCommand // instanceof handles nulls
-                && targetIndexArray.equals(((DeleteCommand) other).targetIndexArray)); // state check
+                || (other instanceof DeletePersonCommand // instanceof handles nulls
+                && targetIndexArray.equals(((DeletePersonCommand) other).targetIndexArray)); // state check
     }
 }
